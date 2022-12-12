@@ -22,7 +22,7 @@
         android:id="@+id/wynik"
         android:layout_width="135dp"
         android:layout_height="72dp"
-        android:text="TextView"
+        android:text="Wpisz liczbę"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -34,10 +34,10 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="171dp"
+        android:layout_height="53dp"
         android:layout_marginBottom="24dp"
-        android:text="Button"
+        android:text="Submit"
         app:layout_constraintBottom_toTopOf="@+id/inputNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

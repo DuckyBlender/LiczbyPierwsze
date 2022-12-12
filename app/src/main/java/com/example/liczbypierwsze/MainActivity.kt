@@ -20,23 +20,28 @@ class MainActivity : AppCompatActivity() {
         var text = findViewById<TextView>(R.id.wynik)
 
         button.setOnClickListener() {
-            var arrayInt = arrayOf<Int>()
-            var x = input.text.toString().toInt()
-            var y = 2
-            var z = floor(sqrt(x.toFloat().toDouble()))
-            while (y <= z) {
-                while (x % y == 0) {
-                    arrayInt += y
-                    x /= y
-                    z = floor(sqrt((x.toFloat().toDouble())))
+            // Check if input is empty
+            if (input.text.toString().isEmpty()) {
+                text.text = "Wpisz liczbę"
+            } else {
+                var arrayInt = arrayOf<Int>()
+                var x = input.text.toString().toInt()
+                var y = 2
+                var z = floor(sqrt(x.toFloat().toDouble()))
+                while (y <= z) {
+                    while (x % y == 0) {
+                        arrayInt += y
+                        x /= y
+                        z = floor(sqrt((x.toFloat().toDouble())))
+                    }
+                    y += 1
                 }
-                y += 1
+                if (x > 1) {
+                    arrayInt += x
+                }
+                var results = arrayInt.contentToString().replace("[", "").replace("]", "")
+                text.text = results
             }
-            if (x > 1) {
-                arrayInt += x
-            }
-            var results = arrayInt.contentToString().replace("[", "").replace("]", "")
-            text.text = results
         }
     }
 }
