@@ -19,28 +19,31 @@ class MainActivity : AppCompatActivity() {
         var input = findViewById<EditText>(R.id.inputNumber)
         var text = findViewById<TextView>(R.id.wynik)
 
+        fun liczbyPierwsze(input: Int): String {
+            var arrayInt = arrayOf<Int>()
+            var x = input
+            var y = 2
+            var z = floor(sqrt(x.toFloat().toDouble()))
+            while (y <= z) {
+                while (x % y == 0) {
+                    arrayInt += y
+                    x /= y
+                    z = floor(sqrt((x.toFloat().toDouble())))
+                }
+                y += 1
+            }
+            if (x > 1) {
+                arrayInt += x
+            }
+            return arrayInt.joinToString()
+        }
+
         button.setOnClickListener() {
             // Check if input is empty
             if (input.text.toString().isEmpty()) {
                 text.text = "Wpisz liczbę"
             } else {
-                var arrayInt = arrayOf<Int>()
-                var x = input.text.toString().toInt()
-                var y = 2
-                var z = floor(sqrt(x.toFloat().toDouble()))
-                while (y <= z) {
-                    while (x % y == 0) {
-                        arrayInt += y
-                        x /= y
-                        z = floor(sqrt((x.toFloat().toDouble())))
-                    }
-                    y += 1
-                }
-                if (x > 1) {
-                    arrayInt += x
-                }
-                var results = arrayInt.contentToString().replace("[", "").replace("]", "")
-                text.text = results
+                text.text = liczbyPierwsze(input.text.toString().toInt())
             }
         }
     }
